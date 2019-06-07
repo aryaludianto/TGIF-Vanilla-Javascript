@@ -117,15 +117,9 @@
     
     <div id="footer" class="navbar navbar-inverse">
       <h4> &#169; 2016 TGIF | All Rights Reserved</h4>
-    </div>
-    <script src="./data/main.js"></script>
-    <script src="./data/pro-congress-113-house.js"></script>
-    <script>
-    
-      $(document).ready(fillState());
-      $(document).ready(dispState);
-    
-    </script>
+    </div>   
+    <script src="./data/congress-113.js"></script>
+    <script> $(document).ready(fetchData(data, house))</script>
   </div>
   </body>
 </html>

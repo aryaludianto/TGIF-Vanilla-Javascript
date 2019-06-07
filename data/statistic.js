@@ -1,3 +1,5 @@
+
+
 var statistics = {
   "number_of_democrats": 0,
   "number_of_republicans":0,
@@ -141,8 +143,7 @@ function dispTab (tab , member) {
 
 }
 
-//----display data all-------
-
+//----display data statistics---------
 function dispDataLoyalty () {
   glanceTab(statistics);
   dispTab ("mostLoyal", statistics)
