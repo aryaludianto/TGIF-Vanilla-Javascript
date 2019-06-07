@@ -276,7 +276,7 @@ fetch(URL, { method:'GET',
     } else throw new Error(response.statusText)
   }).then(data => {
       members = data.results[0].members;
-      
+      //function passed as an argument
       type(members)
 
   }).catch(error =>  {
