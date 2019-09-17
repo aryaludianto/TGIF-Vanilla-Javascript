@@ -246,7 +246,7 @@ let members;
 const senate = "https://api.propublica.org/congress/v1/113/senate/members.json";
 const house = "https://api.propublica.org/congress/v1/113/house/members.json";
 
-//-------------Group of "display" function that will be pass as argument to fetch function
+//-------------Group of "display" function that will pass as arguments to fetch function
 function data () {
   fillState()
   dispState()
@@ -264,12 +264,20 @@ function attendance (members) {
 //------------------------------------------------------------------------------------------
 
 
+function loader () {
+  let loader = document.getElementById("loader"),
+      container = document.getElementById("container");
+
+      loader.setAttribute("class", "active");
+      container.setAttribute("class", "active")
+}
+
 
 //----- fetch function placed on every pages in document ready-----------
 function fetchData (type, dataURL) {
 let URL = dataURL;
 fetch(URL, { method:'GET', 
-                   headers: { 'X-API-Key' : 'yDopPricaMTxYJvgYSF3d1dah1k2TlgaijneYq1G' }})
+                   headers: { 'X-API-Key' : 'b707HywJz5y3pX3ZGtPRYJZTDwXUs2EZHcro3zMT' }})
   .then(response => {
     if(response.ok){ 
       return response.json()
@@ -277,7 +285,8 @@ fetch(URL, { method:'GET',
   }).then(data => {
       members = data.results[0].members;
       //function passed as an argument
-      type(members)
+      type(members);  
+      loader();
 
   }).catch(error =>  {
     console.log('ERROR: ' + error.message)
@@ -287,12 +296,9 @@ fetch(URL, { method:'GET',
 //-------------------------------------------------------------------------
   
 
-
 function dispSenat (member) {
-  while(document.getElementById("senate-data").hasChildNodes())
-  {
-    document.getElementById("senate-data").removeChild(document.getElementById("senate-data").firstChild);
-  }
+  let tbody = document.getElementById("senate-data");
+  tbody.innerHTML = "";
 
   let senTab = document.getElementById("senate-data");
   let empRow = document.createElement("tr"),
